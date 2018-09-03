@@ -51,9 +51,10 @@ class Hero {
        this.step = 101;
        this.jump = 83;
        this.startX = this.step * 2;
-       this.startY = (this.jump * 5) - 20;
+       this.startY = (this.jump * 4) + 55;
        this.x = this.startX;
        this.y = this.startY;
+       this.victory = false;
      }
      // Draw hero sprite on current x and y coor Posistion
      render() {
@@ -87,29 +88,51 @@ class Hero {
             break;
        }
      }
+     // Update Posistion
+     update() {
+       // Check collision here
+
+         for (let enemy of allEnemies) {
+           //  Did player x and y collide with enemy
+           if (this.y === enemy.y && (enemy.x + enemy.step / 2 > this.x
+             && enemy.x < this.x + this.step / 2)) {
+             this.reset();
+           }
+           console.log(this.y, enemy.y)
+         // Check win here?
+           // Did player x and y reach final tile?
+           if (this.y === 0) {
+              this.victory = true;
+              this.reset();
+            }
+         }
+     }
+     // Reset Hero
+      reset() {
+        // Set x and y to starting x and y
+        this.y = this.startY;
+        this.x = this.startX;
+     }
 }
 
 const player = new Hero();
-const bug1 = new Enemy(-101, 0, 200);
+const bug1 = new Enemy(-101, 0, 275);
 const bug2 = new Enemy(-101, 83, 300);
 const bug3 = new Enemy((-101 * 2.5), 166, 300);
+const bug4 = new Enemy((-101 * 2.5), 0, 275)
 const allEnemies = [];
-allEnemies.push(bug1, bug2, bug3);
+allEnemies.push(bug1, bug2, bug3, bug4);
 console.log(allEnemies);
       //Properties
         // x position
         // y position
         // Sprite Image
      //Methods
-           // Update Posistion
-             // Check collision here
-               //  Did player x and y collide with enemy
-             // Check win here?
-               // Did player x and y reach final tile?
+
+
           // Render
             // Draw player sprite on current x and y coor position
-          // Reset Hero
-            // Set x and y to starting x and y
+
 
 
 // Now instantiate your objects.
