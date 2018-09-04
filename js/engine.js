@@ -66,9 +66,9 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-         replay.addEventListener("click", function () {
+         replay.addEventListener("click", event => {
             
-            const replay = document.querySelector(".modal-button");
+                const clickTarget = event.target;
                 modal.classList.toggle("hide");
                 player.reset();
                 player.victory = false;
@@ -78,6 +78,7 @@ var Engine = (function(global) {
          if (player.victory === true) {
            win.cancelAnimationFrame(id);
            modal.classList.toggle("hide");
+           modal.classList.toggle("show");
            }
            else {
              id = win.requestAnimationFrame(main);
