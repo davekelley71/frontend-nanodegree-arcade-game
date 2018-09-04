@@ -21,24 +21,21 @@ var Engine = (function(global) {
 
     var doc = global.document,
         win = global.window,
-        canvas = doc.createElement('canvas'),
-        ctx = canvas.getContext('2d'),
+        canvas = doc.createElement("canvas"),
+        ctx = canvas.getContext("2d"),
         lastTime,
         id;
 
-    const modal = document.querySelector(".modal-bg");
-    const replay = document.querySelector(".modal-button");
+        const modal = document.querySelector(".modal-bg");
+        const replay = document.querySelector(".modal-button");
 
-    replay.addEventListener("click", function() {
-      modal.classList.toggle("hide");
-      player.reset();
-      player.victory = false;
-      win.requestAnimationFrame(main);
-    });
+   
 
     canvas.width = 505;
     canvas.height = 606;
     doc.body.appendChild(canvas);
+
+    
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -59,6 +56,8 @@ var Engine = (function(global) {
         update(dt);
         render();
 
+        
+
         /* Set our lastTime variable which is used to determine the time delta
          * for the next time this function is called.
          */
@@ -67,13 +66,23 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
+         replay.addEventListener("click", function () {
+            
+            const replay = document.querySelector(".modal-button");
+                modal.classList.toggle("hide");
+                player.reset();
+                player.victory = false;
+                win.requestAnimationFrame(main);
+         });
+         
          if (player.victory === true) {
            win.cancelAnimationFrame(id);
            modal.classList.toggle("hide");
            }
            else {
-        id = win.requestAnimationFrame(main);
+             id = win.requestAnimationFrame(main);
       }
+      
     }
 
     /* This function does some initial setup that should only occur once,

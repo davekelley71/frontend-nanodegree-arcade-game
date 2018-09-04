@@ -98,7 +98,7 @@ class Hero {
              && enemy.x < this.x + this.step / 2)) {
              this.reset();
            }
-           console.log(this.y, enemy.y)
+           
          // Check win here?
            // Did player x and y reach final tile?
            if (this.y === 0) {
@@ -122,7 +122,7 @@ const bug3 = new Enemy((-101 * 2.5), 166, 300);
 const bug4 = new Enemy((-101 * 2.5), 0, 275)
 const allEnemies = [];
 allEnemies.push(bug1, bug2, bug3, bug4);
-console.log(allEnemies);
+
       //Properties
         // x position
         // y position
