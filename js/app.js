@@ -101,9 +101,9 @@ class Hero {
            
          // Check win here?
            // Did player x and y reach final tile?
-           if (this.y === 0) {
+           if (this.y === 55) {
               this.victory = true;
-              this.reset();
+              this.reset();              
             }
          }
      }
